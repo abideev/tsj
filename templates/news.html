@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Новости ТСН{% endblock %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+
+
+<main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8 blog-main">
+          <h3 class="pb-3 mb-4 font-italic border-bottom">
+            Новости
+          </h3>
+          {% for news in pages.items %}
+          <div class="blog-post">
+            <h2 class="blog-post-title"> <a href="{{ url_for('news_detail', slug=news.slug) }}">{{ news.title }} </a></h2>
+            <p class="blog-post-meta">Дата {{ news.created_at }}</p>
+
+            <p> {{ news.description }}</p>
+
+          </div><!-- /.blog-post -->
+          {% endfor %}
+
+          <nav>
+            <ul class="pagination">
+              <li {% if not pages.has_prev %} class="page-item disabled" {% endif %} >
+                <a class="page-link" href="?page={{ pages.prev_num }}" tabindex="-1">Предыдущий</a>
+              </li>
+              {% for page in pages.iter_pages() %}
+              <li  {% if page == pages.page %} class="page-item active"  {% endif %} ><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+              {% endfor %}
+              <li {% if not pages.has_next %} class="page-item disabled" {% endif %} >
+                <a class="page-link" href="?page={{ pages.next_num }}">Cледующий</a>
+              </li>
+            </ul>
+          </nav>
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">Важное</h4>
+            <p class="mb-0">Очень важный текст</p>
+          </div>
+
+
+
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </main>
+
+{% endblock %}

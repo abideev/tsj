@@ -1,0 +1,63 @@
+{% extends 'UserPanel/base.html' %}
+{% block title %}Заявка в ТСН{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Платежи</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Месяц</th>
+                                <th scope="col">К оплате</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for user_appeal in user_appeal_pages.items %}
+
+
+                            <tr>
+                                <th scope="row"><a
+                                        href="{{ url_for('user_panel_history_appeal_uid', uid=user_appeal.uid) }}">{{
+                                    user_appeal.theme }}</a></th>
+                                 <td>{{ user_appeal.created_at }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        {% if user_appeal_data.count() == 0 %} <br>
+                        <center><h3>У Вас нет обращений</h3></center>
+                        {% endif %}
+
+
+                        <nav>
+                            <ul class="pagination">
+                                <li {% if not user_appeal_pages.has_prev %} class="page-item disabled" {% endif %}>
+                                    <a class="page-link" href="?page={{ user_appeal_pages.prev_num }}" tabindex="-1">Предыдущая</a>
+                                </li>
+                                {% for page in user_appeal_pages.iter_pages() %}
+                                <li {% if page== user_appeal_pages.page %} class="page-item active" {% endif %}><a
+                                        class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                                {% endfor %}
+                                <li {% if not user_appeal_pages.has_next %} class="page-item disabled" {% endif %}>
+                                    <a class="page-link" href="?page={{ user_appeal_pages.next_num }}">Следующая</a>
+                                </li>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

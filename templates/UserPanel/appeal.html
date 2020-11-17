@@ -1,0 +1,54 @@
+{% extends 'UserPanel/base.html' %}
+{% block title %}Заявка в ТСН{% endblock %}
+
+{% block content %}
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Сообщение в ТСН</h4>
+                </div>
+                <div class="card-body">
+                  <form action="{{ url_for('user_panel_appeal')}}" method="POST">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="appeal_theme">Тема сообщения</label>
+                          <select class="form-control" id="select_appeal_theme" name="theme">
+                            <option>Вопросы по передаче показаний</option>
+                            <option>Квитанции, расчёты, тарифы</option>
+                            <option>Приборы учёта</option>
+                            <option>Оплата</option>
+                            <option>Ремонтные работы</option>
+                            <option>Придомовая территория</option>
+                            <option>Работа сайта</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Ваше сообщение</label>
+                          <div class="form-group bmd-form-group">
+                            <textarea class="form-control" rows="5" name="text-appeal"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary pull-right">Отправить</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

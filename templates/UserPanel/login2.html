@@ -1,0 +1,105 @@
+{% extends 'UserPanel/base_auth.html' %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+<body class="login-page">
+<section class="h-100">
+
+    <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
+                <div class="card fat">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Авторизация</h4>
+                        <main role="main" class="container">
+                            <div class="row">
+                                <div>
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                    {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endwith %}
+                                </div>
+                            </div>
+                        </main>
+
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <div class="form-group">
+                                    {{ form.login.label(class="form-control-label") }}
+                                    {% if form.login.errors %}
+
+                                    {{ form.login(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.login.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+
+                                    {% else %}
+                                    {{ form.login(class="form-control") }}
+
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+
+                                    {{ form.password.label(class="form-control-label") }}
+                                    {% if form.password.errors %}
+
+                                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+
+                                    {% else %}
+                                    {{ form.password(class="form-control") }}
+                                    {% endif %}
+                                    <a href="/lk/forgot" class="float-right">
+                                        Забыли пароль?
+                                    </a>
+                                </div>
+
+                                <div class="form-check">
+                                    {{ form.remember(class="form-check-input") }}
+
+                                    {{ form.remember.label(class="form-check-label") }}
+                                </div>
+                                <br>
+                                <div class="container ">
+                               {{ form.recaptcha }}
+                               {% if form.recaptcha.errors %}
+                                    {% for error in form.recaptcha.errors %}
+                                         <span>{{ error }}</span>
+                                    {% endfor %}
+                               {% endif %}
+                                </div>
+                            </fieldset>
+
+                            <div class="form-group m-0">
+                                {{ form.submit(class="btn btn-primary btn-block") }}
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                Нет аккаунта? <a href="/lk/register">Создать</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer">
+                    &copy;
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

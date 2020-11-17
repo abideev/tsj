@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+    <main role="main" class="container">
+        <div class="row container">
+            <div class="col-md-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title">{{ news_detail_data_host_post.title }}</h2>
+                    <p class="blog-post-meta">Дата: {{ news_detail_data_host_post.created_at }}</p>
+                    <br>
+
+                    <p> {{ news_detail_data_host_post.description }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

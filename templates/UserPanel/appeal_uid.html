@@ -1,0 +1,59 @@
+{% extends 'UserPanel/base.html' %}
+{% block title %}Информация об обращении{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">ИНФОРМАЦИЯ</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <h5>ИНФОРМАЦИЯ ОБ ОБРАЩЕНИИ</h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <td class="table-primary"><b>Номер обращения: </b>{{ user_appeal_data_uid.uid }}</td>
+                                <td class="table-primary"><b>Дата отправки обращения: </b>{{
+                                    user_appeal_data_uid.created_at }}
+                                </td>
+                                <td class="table-primary"><b>Статус обращения: </b>{{ user_appeal_data_uid.status }}
+                                </td>
+                            </tr>
+                            </thead>
+                        </table>
+
+                        <table class="table">
+                            <thead>
+                            <tr class="d-flex">
+                                <th class="col-3 border"><b>Тема обращения</b> </th>
+                                <th class="col-9 border"> {{ user_appeal_data_uid.theme }}</th>
+                            </tr>
+                            <tr class="d-flex">
+                                <th class="col-3 border"><b>Текст обращения</b> </th>
+                                <th class="col-9 border"> {{ user_appeal_data_uid.description }}</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <br><br><br>
+                        <h5>ОТВЕТ НА ОБРАЩЕНИЕ</h5>
+                        <table class="table">
+                            <thead>
+                            <tr class="d-flex">
+                                <th class="col-3 border"><b>Ответ</b></th>
+                                <th class="col-9 border"></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% endblock %}

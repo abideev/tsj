@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Создание новости{% endblock %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+    <div class="col-md-6">
+        <form action="{{ url_for('create_news')}}" method="POST">
+            {% for filed in form %}
+            <div class="form-group">
+                {{ filed.label(class="control-label") }}
+                {{ filed(class="form-control") }}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-info">Создать</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

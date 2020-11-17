@@ -1,0 +1,83 @@
+{% extends 'UserPanel/base_auth.html' %}
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<body class="login-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Авторизация</h4>
+
+
+                            {% with messages = get_flashed_messages() %}
+                              {% if messages %}
+                                <ul class=flashes>
+                                {% for message in messages %}
+                                  <li>{{ message }}</li>
+                                {% endfor %}
+                                </ul>
+                              {% endif %}
+                            {% endwith %}
+
+							<ul>
+    <li>Login: {{ current_user.login }}</li>
+    <li>Hash_psswd: {{ current_user.password }}</li>
+    <li>Created on: {{ current_user.created_on }}</li>
+    <li>Updated on: {{ current_user.updated_on }}</li>
+    <dt>Access Token:</dt><dd>{{ current_user }}</dd>
+    <dt>Access Token valid until:</dt><dd>{{ current_user.access_token_expires }}</dd>
+    <dt>Refresh Token:</dt><dd>{{ current_user.refresh_token }}</dd>
+
+</ul>
+
+
+
+
+							<form method="POST" class="login-validation" novalidate="">
+								<div class="form-group">
+									<label for="login">Логин</label>
+									<input id="login" type="email" class="form-control" name="login" value="" required autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="password">Пароль
+										<a href="/lk/forgot" class="float-right">
+											Забыли пароль?
+										</a>
+									</label>
+									<input id="password" type="password" class="form-control" name="password" required data-eye>
+								</div>
+
+								<div class="form-group">
+									<div class="custom-checkbox custom-control">
+										<input type="checkbox" name="remember" id="remember" class="custom-control-input">
+										<label for="remember" class="custom-control-label">Запомнить </label>
+									</div>
+								</div>
+
+								<div class="form-group m-0">
+									<button type="submit" class="btn btn-primary btn-block">
+										Авторизоваться
+									</button>
+								</div>
+								<div class="form-group">
+									{{ form.recaptcha }}
+								</div>
+								<div class="mt-4 text-center">
+									Нет аккаунта? <a href="/lk/register">Создать</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="footer">
+						&copy;
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

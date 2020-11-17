@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}{% endblock %}</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/img/favicon.png" rel="icon">
+  <link href="/static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/static/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+  <link href="/static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <link href="/static/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Butterfly - v2.1.0
+  * Template URL: https://bootstrapmade.com/butterfly-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <a href="/" class="logo mr-auto">TODO SQL</a>
+      <!-- Uncomment below if you prefer to use text as a logo -->
+      <!-- <h1 class="logo mr-auto"><a href="index.html">Butterfly</a></h1> -->
+
+      <nav class="nav-menu d-none d-lg-block ">
+        <ul  class="list-unstyled text-small">
+          <li><a href="{{ url_for('index')}}">Главная</a></li>
+          <li><a href="{{ url_for('news_func')}}">Новости</a></li>
+          <li><a href="{{ url_for('services_func')}}">Услуги</a></li>
+          <li class="drop-down"><a href="">О ТСН</a>
+            <ul>
+              <li><a href="{{ url_for('contacts_func')}} ">Контакты</a></li>
+              <li><a href="{{ url_for('government_func')}}">Правление</a></li>
+              <li><a href="{{ url_for('documents_func')}}">Документы</a></li>
+              <li><a href="{{ url_for('information_func')}}">Полезная информация</a></li>
+            </ul>
+          </li>
+          <li><a href="{{ url_for('house_information_func')}}">Информация о доме</a></li>
+          <li><a href="{{ url_for('user_panel_index')}}">Личный кабинет</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+{% block content %}{% endblock %}
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Адрес: </h3>
+            <p>
+               TODO SQL
+              <strong>Phone:</strong> TODO SQL<br>
+              <strong>Email:</strong> TODO SQL<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>TEST</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 1</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 2</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 3</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 4</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>TEST</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 1</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 2</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 3</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">TEST 4</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Мы в социальных сетях</h4>
+            <div class="social-links mt-3">
+              <a href="#" class="vk"><i class="bx bxl-vk"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy;  <strong><span>TODO SQL</span></strong>. Все права защищены.
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/butterfly-free-bootstrap-theme/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+
+
+
+  <!-- Vendor JS Files-->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/vendor/php-email-form/validate.js"></script>
+  <script src="/static/vendor/venobox/venobox.min.js"></script>
+  <script src="/static/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="/static/vendor/counterup/counterup.min.js"></script>
+  <script src="/static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/js/main.js"></script>
+  <script>
+  $('.nav-menu li a').each(function() {
+      if($(this).attr('href')==window.location.pathname){
+      $(this).parents('li').addClass('active');
+
+    }
+  });
+  </script>
+</body>
+
+</html>

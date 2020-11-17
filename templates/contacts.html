@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<br><br><br>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Контактная информация</h2>
+        </div>
+
+        <div>
+          <iframe style="border:0; width: 100%; height: 470px;" src="TODO SQL" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="row mt-5">
+
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Адрес:</h4>
+                {% for contact in contacts_data %}
+                <p> {{ contact.legal_address }} </p>
+                {% endfor %}
+              </div>
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                {% for contact in contacts_data %}
+                <p> {{ contact.email }} </p>
+                {% endfor %}
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Телефон:</h4>
+                {% for contact in contacts_data %}
+                <p> {{ contact.phone }} </p>
+                {% endfor %}
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Ваше Имя" data-rule="minlen:4" data-msg="Пожалуйста, введите Ваше имя" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ваш Email" data-rule="email" data-msg="Пожалуйста, введите действительный адрес электронной почты" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Тема" data-rule="minlen:4" data-msg="Пожалуйста, введите тему Вашего обращения" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Напишите что-нибудь для нас" placeholder="Сообщение"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Ваше сообщение было отправлено. Спасибо!</div>
+              </div>
+              <div class="text-left"><button type="submit">Отправить сообщение</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+{% endblock %}

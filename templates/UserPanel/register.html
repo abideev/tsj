@@ -1,0 +1,229 @@
+{% extends 'UserPanel/base_auth.html' %}
+{% block title %}Регистрация нового пользователя{% endblock %}
+{% block content %}
+
+<body class="register-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="card fat">
+						<div class="card-body">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div align="center" class="col-md-14 alert alert-success" role="alert">
+                    {% for message in messages %}
+                    <center>{{ message }}</center>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+							<h4 class="card-title">Регистрация</h4>
+							<form method="POST" action="">
+								{{ form.csrf_token }}
+								{{ form.hidden_tag() }}
+								<fieldset class="form-group">
+									<div class="form-group">
+										{{ form.name.label(class="form-control-label") }}
+										{% if form.name.errors %}
+											{{ form.name(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.name.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.name(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.surname.label(class="form-control-label") }}
+										{% if form.surname.errors %}
+											{{ form.surname(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.surname.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.surname(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.patronymic.label(class="form-control-label") }}
+										{% if form.patronymic.errors %}
+											{{ form.patronymic(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.patronymic.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.patronymic(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.street.label(class="form-control-label") }}
+										{% if form.street.errors %}
+											{{ form.street(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.street.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.street(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.house_number.label(class="form-control-label") }}
+										{% if form.house_number.errors %}
+											{{ form.house_number(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.house_number.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.house_number(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.apartment_number.label(class="form-control-label") }}
+										{% if form.apartment_number.errors %}
+											{{ form.apartment_number(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.apartment_number.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.apartment_number(class="form-control", id="apartment_number") }}
+										{% endif %}
+									</div>
+
+									<div class="form-group">
+										{{ form.phone.label(class="form-control-label") }}
+										{% if form.phone.errors %}
+											{{ form.phone(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.phone.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.phone(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.email.label(class="form-control-label") }}
+										{% if form.email.errors %}
+											{{ form.email(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.email.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.email(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.login.label(class="form-control-label") }}
+										{% if form.login.errors %}
+											{{ form.login(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.login.errors %}
+													<span>{{ error }}</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.login(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.password.label(class="form-control-label") }}
+										{% if form.password.errors %}
+											{{ form.password(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.password.errors %}
+													<span>Обязательное поле</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.password(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group">
+										{{ form.confirm_password.label(class="form-control-label") }}
+										{% if form.confirm_password.errors %}
+											{{ form.confirm_password(class="form-control is-invalid") }}
+											<div class="invalid-feedback">
+												{% for error in form.confirm_password.errors %}
+													<span> Пароли не соответствуют</span>
+												{% endfor %}
+											</div>
+										{% else %}
+											{{ form.confirm_password(class="form-control") }}
+										{% endif %}
+									</div>
+									<div class="form-group-captcha ">
+									{{ form.recaptcha }}
+								    {% if form.recaptcha.errors %}
+										{% for error in form.recaptcha.errors %}
+											 <span>{{ error }}</span>
+										{% endfor %}
+								    {% endif %}
+									</div>
+								</fieldset>
+								<div class="form-group m-0">
+									{{ form.submit(class="btn btn-primary btn-block") }}
+								</div>
+								<div class="mt-4 text-center">
+									Уже есть аккаунт? <a href="/lk/login">Авторизация</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="footer">
+						&copy;
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'></script>
+    <script type='text/javascript'
+            src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+
+
+<script>
+$("#phone").inputmask({
+  mask: '+7-999-999-99-99',
+  placeholder: ' ',
+  showMaskOnHover: false,
+  showMaskOnFocus: true,
+  onBeforePaste: function (pastedValue, opts) {
+  var processedValue = pastedValue;
+  return processedValue;
+  }
+});
+
+$("#apartment_number").inputmask({
+  mask: '999',
+  placeholder: '',
+  showMaskOnHover: false,
+  showMaskOnFocus: true,
+  onBeforePaste: function (pastedValue, opts) {
+  var processedValue = pastedValue;
+  return processedValue;
+  }
+});
+
+$("#email").inputmask('email');
+
+
+</script>
+
+
+{% endblock %}

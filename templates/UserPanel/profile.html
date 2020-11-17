@@ -1,0 +1,202 @@
+{% extends 'UserPanel/base.html' %}
+{% block title %}Профиль{% endblock %}
+
+
+{% block content %}
+<div class="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title"> {{ current_user.surname }} {{ current_user.name }} {{ current_user.patronymic }}</h4>
+                        <p class="card-category">Заполните свой профиль</p>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+                            <fieldset class="form-group">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form.phone.label(class="bmd-label-floating") }}
+                                            {% if form.phone.errors %}
+                                            {{ form.phone(class="form-control") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.phone.errors %}
+                                                <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                            {% else %}
+                                            {{ form.phone(class="form-control") }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form.email.label(class="bmd-label-floating") }}
+                                            {% if form.email.errors %}
+                                            {{ form.email(class="form-control") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                            {% else %}
+                                            {{ form.email(class="form-control") }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group">
+                                            <div class="custom-file-upload">
+                                                <label for="file-upload" class="custom-file-upload-avatar">
+                                                    <i class="fa fa-cloud-upload"></i> Обновить аватар
+                                                </label>
+                                                    {{ form.picture(class="file-upload", type="file",  id="file-upload") }}
+                                                    {% if form.picture.errors %}
+                                                        {% for error in form.picture.errors %}
+                                                            <span class="text-danger">{{ error }}</span></br>
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-primary pull-right") }}
+                            </div>
+                        </form>
+                        <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div align="center" class="col-md-14 alert alert-success" role="alert">
+                    {% for message in messages %}
+                    <center>{{ message }}</center>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="col-md-5">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <img class="img" src="{{ image_file }}">
+                    </div>
+                    <div class="card-body">
+
+                        <div class="col-md-12 d-flex">
+                            <div class="p-2 left">
+                                <h5 align="left">ФИО: {{ current_user.surname }}
+                                    {{ current_user.name }}
+                                    {% if current_user.patronymic is not none %}
+                                        {{ current_user.patronymic }}
+                                    {% else %}
+                                    {% endif %}
+                                </h5>
+                                <h5 align="left">Телефон: {{ current_user.phone }} </h5>
+                                <h5 align="left">Email:
+                                    {% if current_user.email is not none %}
+                                        {{ current_user.email }}
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+                                </h5>
+                                <h5 align="left">Адрес:
+                                    {% if current_user.apartment_number and
+                                    current_user.house_number and
+                                    current_user.apartment_number  is not none %}
+                                        {{ current_user.street }}, {{ current_user.house_number }}, {{ current_user.apartment_number }}
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+
+                                </h5>
+                                <h5 align="left">Лицевой счёт:
+                                    {% if current_user.personal_account_number is not none %}
+                                        {{ current_user.personal_account_number }}
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+                                </h5>
+                                <h5 align="left">Общая площадь:
+                                    {% if current_user.total_area_premises is not none %}
+                                        {{ current_user.total_area_premises }}
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+                                </h5>
+                                <h5 align="left">Количество зарегистрированных:
+                                    {% if current_user.quantity_citizens_registered_at is not none %}
+                                        {{ current_user.quantity_citizens_registered_at }}
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+                                </h5>
+                                <h5 align="left">Аккаунт подтвержден:
+                                    {% if current_user.active == 1 %}
+                                    Да
+                                    {% else %} нет</h5>
+                                {% endif %}
+                                <h5 align="left">Тип собственности:
+                                    {% if current_user.type_property is not none %}
+                                        {{ current_user.type_property }}
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+
+                                </h5>
+                                <h5 align="left">Категория жильцов:
+                                    Отсутствуют данные
+                                </h5>
+                                <h5 align="left">Домофон:
+                                    {% if current_user.intercom == 1 %}
+                                    Да
+                                    {% elif current_user.itercom %} нет
+                                    {% else %}
+                                    Отсутствуют данные
+                                </h5>
+                                {% endif %}
+                                </h5>
+                                <h5 align="left">Шлагбаум:
+                                     {% if current_user.barrier_count is not none %}
+                                        {{ current_user.barrier_count }} (количество ключей)
+                                    {% else %} Отсутствуют данные
+                                    {% endif %}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.js'></script>
+    <script type='text/javascript'
+            src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+
+
+<script>
+$("#phone").inputmask({
+  mask: '+7-999-999-99-99',
+  placeholder: ' ',
+  showMaskOnHover: false,
+  showMaskOnFocus: true,
+  onBeforePaste: function (pastedValue, opts) {
+  var processedValue = pastedValue;
+  return processedValue;
+  }
+});
+</script>
+
+    {% endblock %}
+
+

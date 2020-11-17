@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+
+
+    <div class="container header-into" style="margin-top: 100px">
+
+      <div id="carousel-example-generic" style="margin-top: 100px" class="carousel slide" data-ride="carousel">
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active ">
+            <div class="row " >
+              <div class="header-items ">
+                <h1>Личный кабинет</h1>
+                <li>Передавайте показания счетчиков</li>
+                <li>Смотрите историю начислений и платежей</li>
+                <li>Оплачивайте онлайн не выходя из дома</li>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                <img src="static/img/headers/header-1.png" class="fluid" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row">
+               <div class="header-items ">
+                <h1>Услуги ТСЖ</h1>
+                <li>Онлайн прием завявок</li>
+                <li>Профессиональные работники</li>
+                <li>Гарантия на выолненные работы</li>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                <img src="static/img/headers/header-2.png" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+<!-- End Hero -->
+
+
+
+
+  <main id="main">
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="text-center title">
+          <h3>Наши показатели</h3>
+        </div>
+
+        <div class="row counters ">
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-toggle="counter-up">931854</span>
+            <p>Выполненых заявок</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-toggle="counter-up">123</span>
+            <p>Отчёта</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-toggle="counter-up">4</span>
+            <p>часа среднее время выполнения заявки</p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Мы развиваемся для Вас</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="las la-basketball-ball" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="">Открытость информации</a></h4>
+              <p class="description">Мы публикуем всю информацию по нашей работе</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="las la-book" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="">IT технологии</a></h4>
+              <p class="description">Мы развиваем наш сайт для Вашего удобства</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
+            <div class="icon-box">
+              <div class="icon"><i class="las la-file-alt" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">Обращение через ЛК</a></h4>
+              <p class="description">Просматривайте статус выполнения</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Наш Адрес</h2>
+        </div>
+
+        <div>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Abb3a72a15dc59db5ed865c3f10a3bd5e3cab20dd56ab2ea4832cfc1377f8dc1e&amp;source=constructor" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Адрес:</h4>
+                <p> TODO SQL </p>
+              </div>
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>TODO SQL</p>
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Телефон:</h4>
+                <p>TODO SQL</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Ваше Имя" data-rule="minlen:4" data-msg="Пожалуйста, введите Ваше имя" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ваш Email" data-rule="email" data-msg="Пожалуйста, введите действительный адрес электронной почты" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Тема" data-rule="minlen:4" data-msg="Пожалуйста, введите тему Вашего обращения" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Напишите что-нибудь для нас" placeholder="Сообщение"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Ваше сообщение было отправлено. Спасибо!</div>
+              </div>
+              <div class="text-left"><button type="submit">Отправить сообщение</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

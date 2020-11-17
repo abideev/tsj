@@ -1,5 +1,7 @@
 # ТСЖ/ТСН сайт. Находится в разработке
 
+DEMO IMG: https://github.com/abideev/tsj/tree/master/demo
+
 Реализовано:
 - Сайт
 - Личный кабинет
